@@ -111,12 +111,23 @@ function cardAdder(dataObj) {
     const span = document.createElement('span')
     span.classList.add('expandButton')
 
+
     containerDiv.appendChild(title)
     containerDiv.appendChild(date)
     containerDiv.appendChild(firstParagraph)
     containerDiv.appendChild(secondParagraph)
     containerDiv.appendChild(thirdParagraph)
     containerDiv.appendChild(span)
+
+    title.textContent = dataObj.title
+    date.textContent = dataObj.date
+    firstParagraph.textContent = dataObj.firstParagraph
+    secondParagraph.textContent = dataObj.secondParagraph
+    thirdParagraph.textContent = dataObj.thirdParagraph
+
+
+
+
     span.addEventListener('click',(element)=>{
 
 containerDiv.classList.toggle('article-open')
@@ -124,7 +135,7 @@ containerDiv.classList.toggle('article-open')
     console.log(containerDiv)
     return containerDiv
 }
-card = cardAdder("doesn't matter")
+card = cardAdder(data[0])
 
 
 /*  Hint: You will need to use createElement more than once here!
