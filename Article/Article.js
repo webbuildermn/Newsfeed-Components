@@ -84,7 +84,16 @@ const data = [{
         thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-    }
+    },
+    {
+      title: 'The Hobbit',
+      date: 'September 1937',
+      firstParagraph: `In a hole in the ground there lived a hobbit. Not a nasty, dirty, wet hole, filled with the ends of worms and an oozy smell, nor yet a dry, bare, sandy hole with nothing in it to sit down on or to eat: it was a hobbit-hole, and that means comfort.`,
+
+      secondParagraph: `It had a perfectly round door like a porthole, painted green, with a shiny yellow brass knob in the exact middle. The door opened on to a tube-shaped hall like a tunnel: a very comfortable tunnel without smoke, with panelled walls, and floors tiled and carpeted, provided with polished chairs, and lots and lots of pegs for hats and coats—the hobbit was fond of visitors. The tunnel wound on and on, going fairly but not quite straight into the side of the hill—The Hill, as all the people for many miles round called it—and many little round doors opened out of it, first on one side and then on another. No going upstairs for the hobbit: bedrooms, bathrooms, cellars, pantries (lots of these), wardrobes (he had whole rooms devoted to clothes), kitchens, dining-rooms, all were on the same floor, and indeed on the same passage. The best rooms were all on the left-hand side (going in), for these were the only ones to have windows, deep-set round windows looking over his garden, and meadows beyond, sloping down to the river.`,
+
+      thirdParagraph: `This hobbit was a very well-to-do hobbit, and his name was Baggins. The Bagginses had lived in the neighbourhood of The Hill for time out of mind, and people considered them very respectable, not only because most of them were rich, but also because they never had any adventures or did anything unexpected: you could tell what a Baggins would say on any question without the bother of asking him. This is a story of how a Baggins had an adventure, and found himself doing and saying things altogether unexpected. He may have lost the neighbours’ respect, but he gained—well, you will see whether he gained anything in the end.`
+  }
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -124,18 +133,34 @@ function cardAdder(dataObj) {
     firstParagraph.textContent = dataObj.firstParagraph
     secondParagraph.textContent = dataObj.secondParagraph
     thirdParagraph.textContent = dataObj.thirdParagraph
-
-
+    span.textContent = "expand"
+    span.style.fontSize = "1rem"
+    span.style.color = 'lightblue'
+    span.style.fontStyle = 'italic'
 
 
     span.addEventListener('click',(element)=>{
 
 containerDiv.classList.toggle('article-open')
+if (span.textContent = 'expand') { span.textContent = 'collapse'}
+else {span.textContent = 'expand'}
     })
-    console.log(containerDiv)
     return containerDiv
-}
-card = cardAdder(data[0])
+
+  }
+
+components = []
+components = data.map(function cb(element){
+  return cardAdder(element)
+
+})
+
+
+components.forEach(function cb(element){
+  document.querySelector('.articles').appendChild(element)
+})
+
+
 
 
 /*  Hint: You will need to use createElement more than once here!
