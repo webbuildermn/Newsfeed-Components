@@ -1,13 +1,41 @@
 /* This is the data we will be using, study it but don't change anything, yet. */
 
 let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+    'Students',
+    'Faculty',
+    "What's New",
+    'Tech Trends',
+    'Music',
+    'Log Out'
 ];
+
+
+
+function makeMenu(dataObj) {
+    const menu = crEl('div', "menu")
+    const listElement = document.createElement('ul')
+    menu.appendChild(listElement)
+
+    dataObj.forEach(function cb(element, index) {
+        const li = document.createElement('li')
+        li.textContent = element
+        listElement.appendChild(li)
+    })
+
+    document.querySelector('.menu-button').addEventListener('click',function cb(){
+      menu.classList.toggle('menu--open')
+    })
+
+
+    return menu
+
+}
+menu = makeMenu(menuItems)
+console.log(menu)
+
+
+document.querySelector('.header').appendChild(makeMenu(menuItems))
+
 
 /* 
 
@@ -33,3 +61,9 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+function crEl(el, cl = "", content = "") {
+    element = document.createElement(el)
+    if (cl != "") { element.classList.add(cl) }
+    element.textContent = content
+    return element
+}
